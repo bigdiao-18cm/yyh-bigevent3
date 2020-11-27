@@ -2,6 +2,32 @@ $(function() {
 
     let layer = layui.layer
 
+    // 来获取头像和昵称
+    gettouxnic()
+
+    // 退出功能
+    $("#logoutBtn").click(function() {
+        layer.confirm(
+            '确定要退出登录？', { icon: 3, title: '提 示' },
+            function(index) {
+                // 该函数会在点击确认的时候执行
+                // console.log("点击确认了");
+                // 退出登录要做的事情，应该和登录时候做的事情是相反的
+
+                // 1.需要将存储到本地中token删除掉（localStorage.removeitme(key)）
+                localStorage.removeItem("token")
+
+                // 2.跳转登录页面（login.html）
+                location.href = "login.html"
+
+                layer.close(index); // 关闭当前的询问框
+            });
+    })
+})
+
+// gettouxnic()
+// 来获取头像和昵称
+function gettouxnic() {
     // 获取用户头像和昵称基本信息
     $.ajax({
         url: "/my/userinfo",
@@ -27,13 +53,13 @@ $(function() {
 
             let wenzi = name[0].toUpperCase()
 
-            $("#welcome").text("欢迎" + name)
+            $("#welcome").text("欢迎 " + name)
 
             //2. 头像
             // 根据res的data的user_pic来做不同处理
             if (res.data.user_pic) {
                 // 用户头像 展示用户头像 隐藏文字头像
-                $(".layui-nav-img").show().attr("str", res.data.user_pic)
+                $(".layui-nav-img").show().attr("src", res.data.user_pic)
                 $(".text-avatar").hide()
             } else {
                 // 没有 用户头像 展示用户头像 隐藏文字头像 ==> 文字头像文字来源于name的第一个字符（大写）
@@ -54,23 +80,4 @@ $(function() {
         //     }
         // }
     })
-
-    // 退出功能
-    $("#logoutBtn").click(function() {
-        layer.confirm(
-            '确定要退出登录？', { icon: 3, title: '提 示' },
-            function(index) {
-                // 该函数会在点击确认的时候执行
-                // console.log("点击确认了");
-                // 退出登录要做的事情，应该和登录时候做的事情是相反的
-
-                // 1.需要将存储到本地中token删除掉（localStorage.removeitme(key)）
-                localStorage.removeItem("token")
-
-                // 2.跳转登录页面（login.html）
-                location.href = "login.html"
-
-                layer.close(index); // 关闭当前的询问框
-            });
-    })
-})
+}

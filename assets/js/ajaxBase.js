@@ -20,7 +20,10 @@ $.ajaxPrefilter(function(options) {
         // 形参可以获取到xhr对象
         // console.log(xhr);
 
-        if (xhr.responseJSON.status === 1 && xhr.responseJSON.message === "身份认证失败！") {
+        if (
+            xhr.responseJSON.status === 1 &&
+            xhr.responseJSON.message === "身份认证失败！"
+        ) {
             // 回到登录页面重新登录
             // 把token也清除掉
             localStorage.removeItem("token")

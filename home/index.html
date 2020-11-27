@@ -8,7 +8,7 @@
     <script>
         // 校验token是否存在
         let token = localStorage.getItem("token") // null  ！取反 true
-        console.log(token);
+            // console.log(token);
         if (!token) { // 没有token信息
             // 执行以下代码
             location.href = "login.html"
@@ -68,8 +68,8 @@
                         <a href="javascript:;"><span class="iconfont icon-user"></span>个人中心</a>
                         <dl class="layui-nav-child">
                             <dd><a href="/user/user_info.html" target="layBody"><i class="layui-icon layui-icon-app"></i> 基本资料</a></dd>
-                            <dd><a href="javascript:;"><i class="layui-icon layui-icon-app"></i> 更换头像</a></dd>
-                            <dd><a href="javascript:;"><i class="layui-icon layui-icon-app"></i> 重置密码</a></dd>
+                            <dd><a href="/user/user_avatar.html" target="layBody"><i class="layui-icon layui-icon-app"></i> 更换头像</a></dd>
+                            <dd><a href="/user/user_pwd.html" target="layBody"><i class="layui-icon layui-icon-app"></i> 重置密码</a></dd>
                         </dl>
                     </li>
                 </ul>
@@ -79,8 +79,10 @@
         <div class="layui-body">
             <!-- 内容主体区域 -->
             <!-- <div style="padding: 15px;">内容主体区域</div> -->
-            <iframe src="/home/dashboard.html" name="layBody" frameborder="0"></iframe>
+            <!-- <iframe src="/home/dashboard.html" name="layBody" frameborder="0"></iframe> -->
             <!-- <iframe src="/user/user_info.html" name="layBody" frameborder="0"></iframe> -->
+            <!-- <iframe src="/user/user_pwd.html" name="layBody" frameborder="0"></iframe> -->
+            <iframe src="/user/user_avatar.html" name="layBody" frameborder="0"></iframe>
         </div>
 
         <div class="layui-footer">
